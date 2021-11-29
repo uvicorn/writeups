@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Log in</title>
+    <link href="/static/mdb.css" rel="stylesheet">
+    <link href="/static/login.css" rel="stylesheet">
+  </head>
+
+  <body class="text-center">
+    {% if error %}
+      <div class="alert alert-dark alert-fixed" id="alert-dark" role="alert" data-mdb-color="dark" data-mdb-position="top-right" data-mdb-stacking="true" data-mdb-width="535px" data-mdb-append-to-body="true" data-mdb-hidden="true" data-mdb-autohide="true" data-mdb-delay="2000" style="width: 535px; top: 10px; right: 10px; bottom: unset; left: unset; transform: unset;">
+          {{ error }}
+        </div>
+    {% endif %}
+    <div class="form-signin">
+      <form method="POST" action="/login" >
+        <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+
+        <div class="form-floating">
+          <input type="text" name="login" class="form-control" id="floatingInput" placeholder="Login">
+          <label for="floatingInput">Login</label>
+        </div>
+        <div class="form-floating">
+          <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+          <label for="floatingPassword">Password</label>
+        </div>
+        <button class="w-100 btn btn-lg btn-dark" type="submit">Sign in</button>
+      </form>
+      <br>
+      <a href='/register'><button class="w-100 btn btn-lg btn-light" type="submit">Registration</button></a>
+    </div>
+  </body>
+
+</html>

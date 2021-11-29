@@ -1,0 +1,50 @@
+<!doctype html>
+<html class="h-100">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>User {{ username }}</title>
+    <link href="/static/mdb.css" rel="stylesheet">
+    <link href="/static/cover.css" rel="stylesheet">
+    {% if current_user == profile_id and not is_admin %}
+      <style type="text/css">
+        .get-flag-button {
+          cursor: not-allowed;
+          opacity: 0.2;
+        }
+      </style>
+    {% endif %}
+  </head>
+  <body class="d-flex h-100 text-center text-white bg-dark">
+    <div class="cover-container d-flex w-100 h-100 p-3 mx-auto flex-column">
+      <header class="mb-auto">
+        <div>
+          <h3 class="float-md-start mb-0">
+            User page
+            {%if profile_id == 1 %}
+            &nbsp;&nbsp;
+            <span class="badge bg-danger">Admin</span>
+            {% endif %}
+          </h3>
+          <nav class="nav nav-masthead justify-content-center float-md-end">
+            <a class="nav-link" href="/logout">Log out</a>
+          </nav>
+        </div>
+      </header>
+
+      <main class="px-3">
+        <h1>{{ username }}</h1>
+        {% if current_user == profile_id %}
+          <p class="lead">This is your page. Actions:</p>
+          <p class="lead">
+            <a href="/flag" class="btn btn-lg btn-secondary fw-bold border-white bg-white get-flag-button">Get flag</a>
+          </p>
+        {% endif %}
+      </main>
+
+      <footer class="mt-auto text-white-50">
+        <p>User {{ profile_id }}</p>
+      </footer>
+    </div>
+  </body>
+</html>
