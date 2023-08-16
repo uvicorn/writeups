@@ -125,8 +125,15 @@ class Ratchet:
         self.CKs, mk = KDF_CK(self.CKs)
         header = HEADER(self.DHs, self.PN, self.Ns)
         self.Ns += 1
-        return header, ENCRYPT(mk, plaintext, CONCAT(AD, header))
+        enc = ENCRYPT(mk, plaintext, CONCAT(AD, header))
 
+        decrypted_text = DECRYPT(mk, enc, CONCAT(AD, header))
+        # print('MK = ', mk)
+        print('decrypted: ', decrypted_text)
+        ff = unhexlify('b3f3ca9e16fc1c33c86bb08e9ecee860462cdd6716dd2c32a6701b978c76035ec2973e2c6eac490d54f7918a0167179037459cbda47e4abcd5028a405d8374ada62fd23e3fcb29ab1e36e44ef7cfa438')
+        print('FLAG', DECRYPT(mk, ff, CONCAT(AD, header))) # try to decrypt encrypted flag
+        
+        return header, enc
     
     def RatchetDecrypt(self, header, ciphertext, AD):
         plaintext = self._TrySkippedMessageKeys(header, ciphertext, AD)
