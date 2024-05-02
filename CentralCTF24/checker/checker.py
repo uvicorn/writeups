@@ -145,6 +145,7 @@ class Checker(checklib.BaseChecker):
 
             # client.exit()
 
+
         self.cquit(
             checklib.Status.OK,
             public=json.dumps({"username":username,"file_id": file_id}),
