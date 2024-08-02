@@ -10,7 +10,7 @@ idna==3.3
 Jinja2==3.0.3
 MarkupSafe==2.0.1
 psycopg2-binary==2.9.2
-pycryptodome==3.11.0
+pycryptodome==3.19.1
 python-dotenv==0.19.2
 python-multipart==0.0.5
 PyYAML==6.0
